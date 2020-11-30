@@ -10,17 +10,20 @@ class task_executer(threading.Thread):
 
     def __init__(self):
         threading.Thread.__init__(self)
+        self.lock=threading.Lock()
 
     def run(self):
         while 1:
             message_list = []
             for curr_slot in range(len(execution_slots)):
                 # acquire lock
+                self.lock.acquire()
                 if(execution_slots[curr_slot]):
                     execution_slots[curr_slot]["duration"] -= 1
                     if not execution_slots[curr_slot]["duration"]:
                         message_list.append(execution_slots[curr_slot])
                         execution_slots[curr_slot]=None
+                self.lock.release()
                 # release lock
             time.sleep(1)
             if(len(message_list)):
@@ -38,7 +41,7 @@ class slot_handler(threading.Thread):
 
     def __init__(self):
         threading.Thread.__init__(self)
-
+        self.lock=threading.Lock()
     def run(self):
         while 1:
             master, masteraddr = requestSocket.accept()
@@ -46,10 +49,12 @@ class slot_handler(threading.Thread):
             modifiedMessage = message.decode()
             newtask = json.loads(modifiedMessage)
             # acquire lock
+            self.lock.acquire()
             c = 0
             while(execution_slots[c] != None):
                 c += 1
             execution_slots[c] = newtask
+            self.lock.release()
             # release lock
             master.close()
 
