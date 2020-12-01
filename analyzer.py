@@ -10,8 +10,10 @@ def calc_mean_median(d, t):
     for i in d:
         completion_time.append(
             (d[i]['end_time'] - d[i]['start_time']).total_seconds())
-    print(t, ':', statistics.mean(completion_time))
-    print(t, ':', statistics.median(completion_time))
+    ans=[statistics.mean(completion_time),statistics.median(completion_time)]
+    print(t, 'mean :',ans[0])
+    print(t, 'median :',ans[1])
+    return ans
 
 
 def generate_jobs_tasks(log_file):
@@ -45,15 +47,27 @@ def generate_jobs_tasks(log_file):
     return {"job": job_dict, "task": task_dict, "worker": worker_dict}
 
 
-def plot(worker_dict, t):
-    plt.title(t)
-    for i in worker_dict:
-        x = [(j[0]-datetime(1970, 1, 1)).total_seconds()
-             for j in worker_dict[i]]
-        y = [j[1] for j in worker_dict[i]]
-        plt.plot(x, y, label="worker %s" % i)
-    plt.legend()
-    plt.show()
+def task_2(worker_dict, t,all_in_one=False):
+	if(all_in_one):
+		plt.title(t)
+		plt.xlabel('Time (HH-MM-SS)')
+		plt.ylabel('Time (Seconds)')
+	else:
+	    fig,lis=plt.subplots(1,3)
+	    fig.suptitle(t)
+	    fig.text(0.04, 0.5, 'Time (Seconds)', va='center', rotation='vertical')
+	    fig.text(0.45,0.04, 'Time (HH-MM-SS)', va='center', rotation='horizontal')
+	    idx=0
+	for i in worker_dict:
+		x = [j[0] for j in worker_dict[i]]
+		y = [j[1] for j in worker_dict[i]]
+		if(all_in_one):
+			plt.step(x, y, label="worker %s" % i)
+		else:
+			lis[idx].step(x,y)
+			lis[idx].title.set_text("worker "+i)
+			idx+=1
+	plt.show()
 
 
 arr = os.listdir()
@@ -61,12 +75,18 @@ file_dict = dict()
 for i in arr:
     if(re.match('.*\.log', i)):
         file_dict[i] = generate_jobs_tasks(i)
-
+idx=0
+fig,lis=plt.subplots(1,3)
+fig.text(0.04, 0.5, 'Time (Seconds)', va='center', rotation='vertical')
 for elem in file_dict:
     print(elem)
-    calc_mean_median(file_dict[elem]["task"], "Task")
-    calc_mean_median(file_dict[elem]["job"], "Job")
+    t=calc_mean_median(file_dict[elem]["task"], "Task")
+    j=calc_mean_median(file_dict[elem]["job"], "Job")
+    lis[idx].bar(['Mean Task','Median Task','Mean Job','Median Job'],t[:2]+j[:2])
+    lis[idx].title.set_text(elem)
+    idx+=1
     print()
+plt.show()
 
 for elem in file_dict:
-    plot(file_dict[elem]["worker"],elem)
+    task_2(file_dict[elem]["worker"],elem,all_in_one=True)	
