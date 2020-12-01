@@ -161,7 +161,7 @@ Workers = {i['worker_id']: {'max_slots': i['slots'], 'port': i['port'],
 workerIndex = sorted([i for i in Workers])
 Jobs = dict()
 TaskPool = []
-logging.basicConfig(filename="events.log", format='%(asctime)s\t%(message)s',filemode='w') 
+logging.basicConfig(filename=algo_type+".log", format='%(asctime)s\t%(message)s',filemode='w') 
 logger=logging.getLogger() 
 logger.setLevel(logging.DEBUG)
 
