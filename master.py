@@ -169,7 +169,7 @@ requestPort = 5000
 requestSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 requestSocket.bind(('', requestPort))
 requestSocket.listen(1)
-
+ 
 responsePort = 5001
 responseSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 responseSocket.bind(('', responsePort))
