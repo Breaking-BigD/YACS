@@ -1,0 +1,48 @@
+2020-12-01 19:45:32,894	Started_Job->	Job_Id: 0
+2020-12-01 19:45:32,899	Started_Task->	Type: map	Task_Id: 0_M0	Job_Id: 0	Worker_Id: 1
+2020-12-01 19:45:32,900	Started_Task->	Type: map	Task_Id: 0_M1	Job_Id: 0	Worker_Id: 2
+2020-12-01 19:45:34,439	Completed_Task->	Type: map	Task_Id: 0_M0	Job_Id: 0	Worker_Id: 1
+2020-12-01 19:45:35,515	Started_Job->	Job_Id: 1
+2020-12-01 19:45:35,520	Started_Task->	Type: map	Task_Id: 1_M0	Job_Id: 1	Worker_Id: 2
+2020-12-01 19:45:35,521	Started_Task->	Type: map	Task_Id: 1_M1	Job_Id: 1	Worker_Id: 1
+2020-12-01 19:45:35,521	Started_Task->	Type: map	Task_Id: 1_M2	Job_Id: 1	Worker_Id: 2
+2020-12-01 19:45:35,522	Started_Task->	Type: map	Task_Id: 1_M3	Job_Id: 1	Worker_Id: 3
+2020-12-01 19:45:36,218	Completed_Task->	Type: map	Task_Id: 0_M1	Job_Id: 0	Worker_Id: 2
+2020-12-01 19:45:36,224	Started_Task->	Type: reduce	Task_Id: 0_R0	Job_Id: 0	Worker_Id: 2
+2020-12-01 19:45:36,224	Started_Task->	Type: reduce	Task_Id: 0_R1	Job_Id: 0	Worker_Id: 1
+2020-12-01 19:45:37,219	Completed_Task->	Type: map	Task_Id: 1_M2	Job_Id: 1	Worker_Id: 2
+2020-12-01 19:45:38,221	Completed_Task->	Type: map	Task_Id: 1_M0	Job_Id: 1	Worker_Id: 2
+2020-12-01 19:45:38,443	Completed_Task->	Type: reduce	Task_Id: 0_R1	Job_Id: 0	Worker_Id: 1
+2020-12-01 19:45:39,162	Started_Job->	Job_Id: 2
+2020-12-01 19:45:39,168	Started_Task->	Type: map	Task_Id: 2_M0	Job_Id: 2	Worker_Id: 1
+2020-12-01 19:45:39,221	Completed_Task->	Type: reduce	Task_Id: 0_R0	Job_Id: 0	Worker_Id: 2
+2020-12-01 19:45:39,242	Completed_Job->	Job_Id: 0
+2020-12-01 19:45:39,495	Started_Job->	Job_Id: 3
+2020-12-01 19:45:39,500	Started_Task->	Type: map	Task_Id: 3_M0	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:39,501	Started_Task->	Type: map	Task_Id: 3_M1	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:40,370	Completed_Task->	Type: map	Task_Id: 1_M3	Job_Id: 1	Worker_Id: 3
+2020-12-01 19:45:40,435	Completed_Task->	Type: map	Task_Id: 1_M1	Job_Id: 1	Worker_Id: 1
+2020-12-01 19:45:40,441	Started_Task->	Type: reduce	Task_Id: 1_R0	Job_Id: 1	Worker_Id: 1
+2020-12-01 19:45:41,224	Completed_Task->	Type: map	Task_Id: 3_M1	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:42,054	Started_Job->	Job_Id: 4
+2020-12-01 19:45:42,061	Started_Task->	Type: map	Task_Id: 4_M0	Job_Id: 4	Worker_Id: 2
+2020-12-01 19:45:42,062	Started_Task->	Type: map	Task_Id: 4_M1	Job_Id: 4	Worker_Id: 2
+2020-12-01 19:45:42,063	Started_Task->	Type: map	Task_Id: 4_M2	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:42,225	Completed_Task->	Type: map	Task_Id: 3_M0	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:42,230	Started_Task->	Type: reduce	Task_Id: 3_R0	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:42,443	Completed_Task->	Type: map	Task_Id: 2_M0	Job_Id: 2	Worker_Id: 1
+2020-12-01 19:45:42,443	Started_Task->	Type: reduce	Task_Id: 2_R0	Job_Id: 2	Worker_Id: 1
+2020-12-01 19:45:44,227	Completed_Task->	Type: reduce	Task_Id: 3_R0	Job_Id: 3	Worker_Id: 2
+2020-12-01 19:45:44,248	Completed_Job->	Job_Id: 3
+2020-12-01 19:45:44,449	Completed_Task->	Type: reduce	Task_Id: 1_R0	Job_Id: 1	Worker_Id: 1
+2020-12-01 19:45:44,470	Completed_Job->	Job_Id: 1
+2020-12-01 19:45:46,229	Completed_Task->	Type: map	Task_Id: 4_M0	Job_Id: 4	Worker_Id: 2
+2020-12-01 19:45:46,235	Completed_Task->	Type: map	Task_Id: 4_M1	Job_Id: 4	Worker_Id: 2
+2020-12-01 19:45:46,376	Completed_Task->	Type: map	Task_Id: 4_M2	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:46,382	Started_Task->	Type: reduce	Task_Id: 4_R0	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:46,382	Started_Task->	Type: reduce	Task_Id: 4_R1	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:46,441	Completed_Task->	Type: reduce	Task_Id: 2_R0	Job_Id: 2	Worker_Id: 1
+2020-12-01 19:45:46,462	Completed_Job->	Job_Id: 2
+2020-12-01 19:45:48,378	Completed_Task->	Type: reduce	Task_Id: 4_R1	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:49,379	Completed_Task->	Type: reduce	Task_Id: 4_R0	Job_Id: 4	Worker_Id: 3
+2020-12-01 19:45:49,400	Completed_Job->	Job_Id: 4
