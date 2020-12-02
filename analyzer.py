@@ -48,26 +48,27 @@ def generate_jobs_tasks(log_file):
 
 
 def task_2(worker_dict, t,all_in_one=False):
-	if(all_in_one):
-		plt.title(t)
-		plt.xlabel('Time (HH-MM-SS)')
-		plt.ylabel('Time (Seconds)')
-	else:
-	    fig,lis=plt.subplots(1,3)
-	    fig.suptitle(t)
-	    fig.text(0.04, 0.5, 'Time (Seconds)', va='center', rotation='vertical')
-	    fig.text(0.45,0.04, 'Time (HH-MM-SS)', va='center', rotation='horizontal')
-	    idx=0
-	for i in worker_dict:
-		x = [j[0] for j in worker_dict[i]]
-		y = [j[1] for j in worker_dict[i]]
-		if(all_in_one):
-			plt.step(x, y, label="worker %s" % i)
-		else:
-			lis[idx].step(x,y)
-			lis[idx].title.set_text("worker "+i)
-			idx+=1
-	plt.show()
+    if(all_in_one):
+    	plt.title(t)
+    	plt.xlabel('Time (HH-MM-SS)')
+    	plt.ylabel('Time (Seconds)')
+    else:
+        fig,lis=plt.subplots(1,3)
+        fig.suptitle(t)
+        fig.text(0.04, 0.5, 'Time (Seconds)', va='center', rotation='vertical')
+        fig.text(0.45,0.04, 'Time (HH-MM-SS)', va='center', rotation='horizontal')
+        idx=0
+    for i in worker_dict:
+        x = [j[0] for j in worker_dict[i]]
+        y = [j[1] for j in worker_dict[i]]
+        if(all_in_one):
+            plt.step(x, y, label="worker %s" % i)
+        else:
+            lis[idx].step(x,y)
+            lis[idx].title.set_text("worker "+i)
+            idx+=1
+    plt.legend()
+    plt.show()
 
 
 arr = os.listdir()
