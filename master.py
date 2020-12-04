@@ -67,7 +67,6 @@ class task_handler(threading.Thread):
                 assignSocket = socket.socket(
                     socket.AF_INET, socket.SOCK_STREAM)
                 assignSocket.connect((workerName, workerPort))
-                print(new_task)
                 assignSocket.send(json.dumps(new_task).encode())
                 logger.info("Started_Task->\tType: %s\tTask_Id: %s\tJob_Id: %s\tWorker_Id: %s"%(new_task["type"],new_task["task_id"],new_task["job_id"],new_task["worker"]))
                 modifiedMessage = assignSocket.recv(1048576).decode()
@@ -88,7 +87,6 @@ class job_request_handler(threading.Thread):
             i, {"worker": None, "status": -1, "type": "map", "job_id": newJob["job_id"]}) for i in newJob["map_tasks"]}
         newJob["reduce_tasks"] = {i["task_id"]: mergeDict(
             i, {"worker": None, "status": -1, "type": "reduce", "job_id": newJob["job_id"]}) for i in newJob["reduce_tasks"]}
-        print("newjob", newJob)
         return newJob
 
     def run(self):
@@ -124,7 +122,6 @@ class worker_response_handler(threading.Thread):
             message = worker.recv(1048576)
             completedTask = json.loads(message.decode())
             for task in completedTask:
-                print("completed task", task)
                 logger.info("Completed_Task->\tType: %s\tTask_Id: %s\tJob_Id: %s\tWorker_Id: %s"%(task["type"],task["task_id"],task["job_id"],task["worker"]))
                 # acquire lock
                 self.lock.acquire()
@@ -138,7 +135,6 @@ class worker_response_handler(threading.Thread):
                 if(not Jobs[task["job_id"]]["remaining_map_tasks"] and not Jobs[task["job_id"]]["remaining_reduce_tasks"]):
                     # acquire lock
                     self.lock.acquire()
-                    print('\n',"completed job",Jobs.pop(task["job_id"]),'\n')
                     logger.info("Completed_Job->\tJob_Id: %s"%task["job_id"])
                     self.lock.release()
                     # release lock

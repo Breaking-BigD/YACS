@@ -27,7 +27,6 @@ class task_executer(threading.Thread):
                 # release lock
             time.sleep(1)
             if(len(message_list)):
-                print(message_list)
                 message = json.dumps(message_list)
                 masterName = ''
                 masterPort = 5001
