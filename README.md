@@ -7,6 +7,7 @@
 # Detailed Working of the code:-
 
 I. master.py
+
 	Args - path of config, algo_type
 	Worker - nested dictionary
 		key:value - worker_id : dictionary
@@ -66,6 +67,7 @@ I. master.py
 	join - main thread which spawns threads waits for threads to terminate
 
 II. worker.py
+
 	Args - req_port,slots
 	execution_slots - list of dict - new_task, initially None x len(total_slots)
 
@@ -84,6 +86,7 @@ II. worker.py
 		- close connection
 
 III. analyzer.py
+
 	reads from logs
 
 	generate_jobs_tasks()
