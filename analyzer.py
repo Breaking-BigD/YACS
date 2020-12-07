@@ -53,7 +53,7 @@ def task_2(worker_dict, t,all_in_one=False):
         plt.xlabel('Time (HH-MM-SS)')
         plt.ylabel('Number of Tasks')
     else:
-        fig,lis=plt.subplots(1,3)
+        fig,lis=plt.subplots(1,len(worker_dict))
         fig.suptitle(t)
         fig.text(0.04, 0.5, 'Number of Tasks', va='center', rotation='vertical')
         fig.text(0.45,0.04, 'Time (HH-MM-SS)', va='center', rotation='horizontal')
@@ -91,4 +91,4 @@ for elem in file_dict:
 plt.show()
 
 for elem in file_dict:
-    task_2(file_dict[elem]["worker"],elem,all_in_one=True)  
+    task_2(file_dict[elem]["worker"],elem,all_in_one=False)  
